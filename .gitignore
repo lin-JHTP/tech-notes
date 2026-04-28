@@ -1,0 +1,17 @@
+# MkDocs 构建产物（不提交到仓库）
+site/
+
+# Python 缓存
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# 编辑器配置
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 系统文件
+.DS_Store
+Thumbs.db

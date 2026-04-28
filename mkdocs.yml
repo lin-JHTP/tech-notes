@@ -1,0 +1,129 @@
+# =============================================================
+# MkDocs Material 站点配置
+# 作者：lin-JHTP
+# 说明：个人技术知识库，涵盖嵌入式、充电桩、CS基础、AI学习等方向
+# =============================================================
+
+# -------------------- 站点基本信息 --------------------
+site_name: lin-JHTP 的技术知识库
+site_url: https://lin-JHTP.github.io/tech-notes/
+site_author: lin-JHTP
+site_description: 嵌入式工程师的技术成长笔记，涵盖嵌入式开发、充电桩、计算机基础与 AI 学习之路
+
+# -------------------- 仓库信息（右上角显示） --------------------
+repo_name: lin-JHTP/tech-notes
+repo_url: https://github.com/lin-JHTP/tech-notes
+edit_uri: edit/main/docs/
+
+# -------------------- 主题配置（Material 风格） --------------------
+theme:
+  name: material
+  language: zh        # 界面语言中文
+  palette:
+    # 日间模式（浅色）
+    - scheme: default
+      primary: indigo
+      accent: blue
+      toggle:
+        icon: material/weather-sunny
+        name: 切换为暗色模式
+    # 夜间模式（深色）
+    - scheme: slate
+      primary: indigo
+      accent: blue
+      toggle:
+        icon: material/weather-night
+        name: 切换为亮色模式
+  font:
+    text: Noto Sans SC   # 中文字体
+    code: Fira Code
+  features:
+    - navigation.tabs          # 顶部标签页导航
+    - navigation.tabs.sticky   # 标签页滚动后保持吸顶
+    - navigation.sections      # 侧边栏分组
+    - navigation.expand        # 侧边栏默认展开
+    - navigation.top           # 返回顶部按钮
+    - navigation.indexes       # 目录页作为 section 首页
+    - search.suggest           # 搜索建议
+    - search.highlight         # 搜索结果高亮
+    - content.code.copy        # 代码块一键复制
+    - content.code.annotate    # 代码注解支持
+    - toc.follow               # TOC 跟随滚动高亮
+  icon:
+    repo: fontawesome/brands/github
+
+# -------------------- 插件 --------------------
+plugins:
+  - search:
+      lang: zh           # 中文搜索支持
+
+# -------------------- Markdown 扩展 --------------------
+markdown_extensions:
+  - admonition              # 提示块（note/warning/tip 等）
+  - pymdownx.details        # 可折叠的提示块
+  - pymdownx.superfences:   # 代码块增强（支持嵌套、mermaid 图表）
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:        # 选项卡内容
+      alternate_style: true
+  - pymdownx.highlight:     # 代码高亮
+      anchor_linenums: true
+  - pymdownx.inlinehilite   # 行内代码高亮
+  - pymdownx.emoji:         # Emoji 支持
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.tasklist:      # 任务列表
+      custom_checkbox: true
+  - toc:                    # 目录
+      permalink: true       # 标题加锚点链接
+  - attr_list               # 属性列表
+  - md_in_html              # HTML 中支持 Markdown
+  - tables                  # 表格支持
+
+# -------------------- 导航栏结构 --------------------
+# 按模块组织，方便后续扩展
+nav:
+  - 🏠 知识地图: 00-index.md
+
+  - 🔧 嵌入式开发:
+    - 01-embedded/index.md
+    - C 语言进阶: 01-embedded/c-language.md
+    - RTOS 与多线程: 01-embedded/rtos.md
+    - 外设驱动汇总: 01-embedded/peripherals.md
+    - 调试技巧: 01-embedded/debugging.md
+    - 常用代码范式: 01-embedded/code-patterns.md
+    - GD32 专项笔记: 01-embedded/gd32-specific.md   # 未来内容待完善
+
+  - 🔌 充电桩业务:
+    - 02-charging-pile/index.md
+    - 协议规范: 02-charging-pile/protocols.md
+    - 硬件结构: 02-charging-pile/hardware.md
+    - 安全机制: 02-charging-pile/safety.md
+    - 工作经验案例: 02-charging-pile/work-log.md
+    - OCPP 深入解析: 02-charging-pile/ocpp-deep-dive.md  # 未来内容待完善
+
+  - 💻 计算机基础:
+    - 03-cs-fundamentals/index.md
+    - 数据结构: 03-cs-fundamentals/data-structures.md
+    - 算法: 03-cs-fundamentals/algorithms.md
+    - 网络: 03-cs-fundamentals/network.md
+    - 操作系统: 03-cs-fundamentals/os.md              # 未来内容待完善
+
+  - 🤖 AI 学习之路:
+    - 04-ai-learning/index.md
+    - Python 基础: 04-ai-learning/python-basics.md
+    - 数学基础复习: 04-ai-learning/math-foundations.md
+    - 机器学习概览: 04-ai-learning/ml-overview.md
+    - 对话机器人: 04-ai-learning/nlp-chatbot.md
+    - 图像识别与CV: 04-ai-learning/cv-image.md
+    - 深度学习入门: 04-ai-learning/deep-learning.md    # 未来内容待完善
+    - 边缘 AI (TinyML): 04-ai-learning/edge-ai.md     # 未来内容待完善
+
+  - 🛠️ 工具集锦: 05-tools.md
+
+  - 📓 每日笔记: 99-daily/README.md
+
+# -------------------- 版权信息 --------------------
+copyright: Copyright &copy; 2026 lin-JHTP

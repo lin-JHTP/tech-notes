@@ -1,0 +1,76 @@
+# ============================================================
+# GitHub Actions 工作流：自动构建并部署 MkDocs 站点到 GitHub Pages
+# 触发条件：main 分支有 push 时自动执行
+# ============================================================
+
+name: 部署知识库到 GitHub Pages
+
+on:
+  push:
+    branches:
+      - main   # 仅在推送到 main 分支时触发
+
+  # 允许在 Actions 页面手动触发
+  workflow_dispatch:
+
+# 设置 GITHUB_TOKEN 权限，允许写入 GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 同一时间只允许一个部署任务运行，避免并发冲突
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  # ── 构建 Job ──────────────────────────────────────────────
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. 检出代码
+      - name: 检出代码
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # 获取完整 git 历史（用于 git-revision-date 插件）
+
+      # 2. 安装 Python
+      - name: 设置 Python 环境
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip           # 缓存 pip 依赖，加速后续构建
+
+      # 3. 安装 MkDocs Material 及依赖
+      - name: 安装 MkDocs Material 依赖
+        run: |
+          pip install \
+            mkdocs-material \
+            mkdocs-material[imaging]
+
+      # 4. 构建静态站点（输出到 site/ 目录）
+      - name: 构建 MkDocs 站点
+        run: mkdocs build --strict
+
+      # 5. 上传构建产物（供 deploy job 使用）
+      - name: 上传页面产物
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site/   # MkDocs 默认输出目录
+
+  # ── 部署 Job ──────────────────────────────────────────────
+  deploy:
+    needs: build           # 等待 build job 成功后再执行
+    runs-on: ubuntu-latest
+
+    # 配置 GitHub Pages 部署环境
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: 部署到 GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
