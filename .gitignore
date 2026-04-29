@@ -1,0 +1,35 @@
+# MkDocs 构建输出目录
+site/
+
+# Python 缓存
+__pycache__/
+*.py[cod]
+*.pyo
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# 虚拟环境
+.venv/
+venv/
+env/
+.env
+
+# 编辑器
+.vscode/settings.json
+.idea/
+*.swp
+*.swo
+*.tmp
+*.bak
+*.orig
+
+# macOS
+.DS_Store
+__MACOSX/
+
+# Windows
+Thumbs.db
+desktop.ini

@@ -1,0 +1,100 @@
+site_name: Tech Notes
+site_description: 📚 个人技术知识库 | 嵌入式 · 充电桩 · AI · CS基础 · 工具
+site_author: lin-JHTP
+site_url: https://lin-JHTP.github.io/tech-notes/
+
+repo_name: lin-JHTP/tech-notes
+repo_url: https://github.com/lin-JHTP/tech-notes
+
+theme:
+  name: material
+  language: zh
+  palette:
+    - scheme: default
+      primary: teal
+      accent: cyan
+      toggle:
+        icon: material/brightness-7
+        name: 切换到深色模式
+    - scheme: slate
+      primary: teal
+      accent: cyan
+      toggle:
+        icon: material/brightness-4
+        name: 切换到浅色模式
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - navigation.indexes
+    - toc.integrate
+    - search.highlight
+    - search.suggest
+    - content.code.copy
+    - content.code.annotate
+  icon:
+    repo: fontawesome/brands/github
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: true
+      title: 本页目录
+
+plugins:
+  - search:
+      lang: zh
+  - tags
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/lin-JHTP
+
+nav:
+  - 首页: index.md
+  - 嵌入式开发:
+    - 01-embedded/index.md
+    - GD32入门与工程实践: 01-embedded/gd32-getting-started.md
+    - FreeRTOS实战笔记: 01-embedded/freertos-practical-notes.md
+    - 串口与DMA调试经验: 01-embedded/uart-dma-debug.md
+    - 嵌入式C编程规范: 01-embedded/embedded-c-coding-style.md
+  - 充电桩技术:
+    - 02-charging-pile/index.md
+    - OCPP协议深度解析: 02-charging-pile/ocpp-protocol-deep-dive.md
+    - 充电桩安全业务设计: 02-charging-pile/charging-safety-design.md
+    - GB/T标准对比笔记: 02-charging-pile/gbt-standard-notes.md
+  - CS基础:
+    - 03-cs-fundamentals/index.md
+    - 操作系统核心概念速查: 03-cs-fundamentals/os-core-concepts.md
+    - 计算机网络精华笔记: 03-cs-fundamentals/network-essentials.md
+    - 数据结构与算法精华: 03-cs-fundamentals/data-structures-algorithms.md
+  - AI学习:
+    - 04-ai-learning/index.md
+    - AI学习路线与资源导航: 04-ai-learning/ai-learning-roadmap.md
+    - Python机器学习入门实践: 04-ai-learning/python-ml-intro.md
+    - 边缘AI与嵌入式部署笔记: 04-ai-learning/edge-ai-deployment.md
+  - 效率工具:
+    - 05-tools/index.md
+    - Git高级用法与踩坑记录: 05-tools/git-advanced-tips.md
+    - VSCode嵌入式开发配置全攻略: 05-tools/vscode-embedded-setup.md
+    - Linux常用命令与Shell技巧: 05-tools/linux-shell-tips.md
+  - 每日笔记:
+    - 99-daily/index.md
+    - 每日学习记录模板: 99-daily/daily-log-template.md
+    - 问题排查日志示例: 99-daily/debug-log-example.md
+    - 周报与复盘模板: 99-daily/weekly-review-template.md
