@@ -1,0 +1,12 @@
+# MkDocs 及相关依赖
+# 用于本地开发和 GitHub Actions 自动部署
+
+# MkDocs Material 主题（含全部内置插件）
+mkdocs-material==9.5.*
+
+# 图片处理依赖（MkDocs Material 社交卡片/缩略图功能所需）
+pillow
+cairosvg
+
+# 站点压缩优化（可选，减少 HTML/CSS/JS 体积）
+mkdocs-minify-plugin
